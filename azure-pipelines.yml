@@ -31,11 +31,9 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/NodeJsExpress.zip'
     replaceExistingArchive: true
-- task: AzureWebApp@1
+- task: AzureWebAppContainer@1
   inputs:
-    azureSubscription: 'f391f344-6c4a-4fbc-af46-d5cc8f8c5add'
+    azureSubscription: 'DevOps - Neeraj & Y(f391f344-6c4a-4fbc-af46-d5cc8f8c5add)'
     appName: 'nodejswebs'
-    package: '$(System.DefaultWorkingDirectory)'
-    customWebConfig: '-Handler iisnode -NodeStartFile server.js -appType node'
 
   
