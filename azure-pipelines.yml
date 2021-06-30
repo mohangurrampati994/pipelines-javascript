@@ -31,3 +31,18 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/NodeJsExpress.zip'
     replaceExistingArchive: true
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    includeRootFolder: true
+    archiveType: '7z'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/NodeJsExpress.zip'
+    replaceExistingArchive: true
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'DevOps - Neeraj & Y (f391f344-6c4a-4fbc-af46-d5cc8f8c5add)'
+    appType: 'webAppLinux'
+    appName: 'nodejswebs'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    runtimeStack: 'NODE|14-lts'
